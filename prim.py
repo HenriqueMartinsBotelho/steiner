@@ -66,6 +66,14 @@ def PontosDoArquivo(diretorio):
             pontos.append(p)
     return pontos
 
+
+
+def gerar(tem_pesos):
+    print("OK")
+    print(tem_pesos)
+
+
+
 '''
 pontos = pontosFromFile("cruzamento1.txt")
 arestas = prim(pontos)
