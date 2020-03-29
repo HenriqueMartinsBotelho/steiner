@@ -6,7 +6,7 @@ import math
 import numpy as np
 import pylab as pl
 from matplotlib import collections  as mc
-from prim import *
+import aux
 
 root = tk.Tk()
 #root.geometry("1024x728+200+200")
@@ -26,9 +26,9 @@ def lerPontos():
     label1.config(text=fileName)
 
 def mst(diretorio):
-    pontos = PontosDoArquivo(diretorio)
-    arestas = primAlg(pontos)
-    arestas = convertePrim(arestas)
+    pontos = aux.PontosDoArquivo(diretorio)
+    arestas = aux.primAlg(pontos)
+    arestas = aux.convertePrim(arestas)
     lc = mc.LineCollection(arestas, linewidths=1)
     fig, ax = pl.subplots()
     ax.add_collection(lc)
@@ -53,16 +53,16 @@ label1 = tk.Label(
     relief="flat",
     width="50"
 )
-
+'''
 #BTN gerar arquivos
-gerarArquivos = tk.Button(root, text="Gerar Arquivos", padx=10, pady=5, fg="white", bg="black", command=lambda:gerar(tem_pesos.get()))
+gerarArquivos = tk.Button(root, text="Gerar Arquivos", padx=10, pady=5, fg="white", bg="black", command=lambda:aux.gerar(tem_pesos.get()))
 
 #Input quantidade de arquivos
 qntArquivos = tk.Entry(root, width="20")
 
 #checkbox pesos
 checkPesos = tk.Checkbutton(root, text="Pontos com pesos?", variable=tem_pesos)
-
+'''
 
 # =================================================================================================== #
 
@@ -71,8 +71,8 @@ checkPesos = tk.Checkbutton(root, text="Pontos com pesos?", variable=tem_pesos)
 openFile.grid(row=0, column=0)
 label1.grid(row=0, column=1)
 prim.grid(row=0, column=2)
-gerarArquivos.grid(row=1, column=0)
+'''gerarArquivos.grid(row=1, column=0)
 qntArquivos.grid(row=1, column=1, sticky="W")
-checkPesos.grid(row=1, column=2)
+checkPesos.grid(row=1, column=2)'''
 
 root.mainloop(); 

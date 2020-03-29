@@ -16,12 +16,12 @@ def w(p1,p2):
 
 def primAlg(pontos):
     E = []
-    X = pontos[1:]
-    Y = [pontos[0]]
-    while len(Y) < len(pontos):
+    NaoEsc = pontos[1:]
+    Esc = [pontos[0]]
+    while len(Esc) < len(pontos):
         menor = math.inf
-        for x in X:
-            for y in Y:
+        for x in NaoEsc:
+            for y in Esc:
                 dist = w(x,y)
                 if dist < menor:
                     menor = dist
@@ -29,8 +29,8 @@ def primAlg(pontos):
                     ye = y
                     e = [xe,ye]
         E.append(e)
-        X.remove(xe)
-        Y.append(xe)
+        NaoEsc.remove(xe)
+        Esc.append(xe)
     return E
 
 
