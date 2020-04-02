@@ -3,10 +3,10 @@ from tkinter import  filedialog, Text
 import os
 from scipy.spatial import distance
 import math
-#import numpy as np
-#import pylab as pl
-#from matplotlib import collections  as mc
-import aux
+import numpy as np
+import matplotlib.pylab as pl
+from matplotlib import collections  as mc
+import f
 
 root = tk.Tk()
 #root.geometry("1024x728+200+200")
@@ -26,9 +26,9 @@ def lerPontos():
     label1.config(text=fileName)
 
 def mst(diretorio):
-    pontos = aux.PontosDoArquivo(diretorio)
-    arestas = aux.primAlg(pontos)
-    arestas = aux.convertePrim(arestas)
+    pontos = f.PontosDoArquivo(diretorio)
+    arestas = f.primAlg(pontos)
+    arestas = f.convertePrim(arestas)
     lc = mc.LineCollection(arestas, linewidths=1)
     fig, ax = pl.subplots()
     ax.add_collection(lc)
@@ -55,7 +55,7 @@ label1 = tk.Label(
 )
 '''
 #BTN gerar arquivos
-gerarArquivos = tk.Button(root, text="Gerar Arquivos", padx=10, pady=5, fg="white", bg="black", command=lambda:aux.gerar(tem_pesos.get()))
+gerarArquivos = tk.Button(root, text="Gerar Arquivos", padx=10, pady=5, fg="white", bg="black", command=lambda:f.gerar(tem_pesos.get()))
 
 #Input quantidade de arquivos
 qntArquivos = tk.Entry(root, width="20")
