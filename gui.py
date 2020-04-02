@@ -3,9 +3,9 @@ from tkinter import  filedialog, Text
 import os
 from scipy.spatial import distance
 import math
-import numpy as np
-import pylab as pl
-from matplotlib import collections  as mc
+#import numpy as np
+#import pylab as pl
+#from matplotlib import collections  as mc
 import aux
 
 root = tk.Tk()
@@ -15,7 +15,7 @@ root['bg'] = "blue"
 
 # ================================================================================================== #
 
-tem_pesos = tk.IntVar()
+tem_pesos = tk.IntVar() 
 
 # =================================================================================================== 
 
