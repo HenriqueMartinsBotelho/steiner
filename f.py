@@ -34,17 +34,6 @@ def primAlg(pontos):
     return E
 
 
-###### LER PONTOS DE UM ARQUIVO E IMPRIMINDO AS ARESTAS ######
-
-# Converte as arestas para um formato imprimível  
-def convertePrim(E):
-    arestas = []
-    for e in E:
-        p1 = (e[0].x, e[0].y)
-        p2 = (e[1].x, e[1].y)
-        arestas.append([p1,p2])  
-    return arestas       
-
 def pontosFromFile(fileName):
     raiz = os.getcwd() #Mostra qual a pasta raiz
     os.chdir(raiz + "/TeseAlgoritmos/corretos/") #Muda a pasta raiz para esta (comentar/modificar essa linha caso o código não pegue)
