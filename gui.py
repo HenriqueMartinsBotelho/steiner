@@ -1,4 +1,4 @@
-import tkinter as tk
+""" import tkinter as tk
 from tkinter import  filedialog, Text
 import os
 from scipy.spatial import distance
@@ -30,14 +30,6 @@ def mst(diretorio):
     pontos = f.PontosDoArquivo(diretorio)
     arestas = f.primAlg(pontos)
     plot.plotar(arestas)
-    '''arestas = f.convertePrim(arestas)
-    lc = mc.LineCollection(arestas, linewidths=1)
-    fig, ax = pl.subplots()
-    ax.add_collection(lc)
-    ax.autoscale()
-    ax.margins(0.1)
-    pl.show()
-'''
 # =================================================================================================== #
 
 # BOTÂO LER ARQUIVO
@@ -93,3 +85,5 @@ qntArquivos.grid(row=1, column=1, sticky="W")
 checkPesos.grid(row=1, column=2)'''
 
 root.mainloop(); 
+
+ """

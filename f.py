@@ -4,7 +4,7 @@ import numpy as np
 import matplotlib.pylab as pl
 from matplotlib import collections  as mc 
 import os
-
+ 
 class Ponto:
     def __init__(self, x,y,w):
         self.x = x
