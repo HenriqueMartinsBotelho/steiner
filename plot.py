@@ -1,12 +1,13 @@
-import tkinter as tk
-from tkinter import  filedialog, Text
+#import tkinter as tk
+#from tkinter import  filedialog, Text
+import time
 import os
-from scipy.spatial import distance
-import math
-import numpy as np
+#from scipy.spatial import distance
+#import math
+#import numpy as np
 import matplotlib.pylab as pl
 from matplotlib import collections  as mc
-import f
+#import f
 
 
 # Converte as arestas para um formato imprimível  
@@ -27,4 +28,5 @@ def plotar(arestas):
     ax.add_collection(lc)
     ax.autoscale()
     ax.margins(0.1)
-    pl.show()
+    #pl.show()
+    pl.savefig("mst")
