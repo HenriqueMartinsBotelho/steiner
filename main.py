@@ -74,7 +74,7 @@ def main(stdscr):
                 arestas = prim.primAlg(pontos)
                 plot.plotar(arestas)
                 stdscr.clear()
-                menu[0] = "\n *** \n Arquivo mst.png gerado com sucesso! \n ***  "
+                menu[0] = "\n *** \n Arquivo mst.png gerado com sucesso!! \n ***  "
             else:
                 print("Hi")
 
