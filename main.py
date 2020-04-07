@@ -6,38 +6,18 @@ from tkinter import  filedialog, Text
 import os
 import matplotlib.pylab as pl
 from matplotlib import collections  as mc
-import f
 import plot
+import readFile
+import prim
 
 root = tkinter.Tk()
 root.withdraw()
 
-class Ponto:
-    def __init__(self, x,y,w):
-        self.x = x
-        self.y = y
-        self.w = w
 
-# funcao para ler pontos de um arquivo
-def lerPontos():
-    raiz = os.getcwd()
-    fileName = filedialog.askopenfilename(initialdir="${raiz}", title="Selecione um arquivo",
-    filetypes=(("text", "*.txt"),))
-    #os.chdir(raiz + "/TeseAlgoritmos/corretos/") #Muda a pasta raiz para esta (comentar/modificar essa linha caso o código não pegue)
-    pontos = []
-    with open(fileName, "r") as f:
-        for l in f:
-            row = l.split()
-            p = Ponto(float(row[0]),float(row[1]), float(row[2]))
-            pontos.append(p)
-    return pontos
-
-
-
-
-
-
-menu = ['1 - Escolher pontos', '2 - Gerar MST', '5 - SAIR']
+menu = ['', '1 - Gerar 50 pontos', '2 - Gerar 100 pontos', '3 - Gerar 1000 pontos',
+         '4 - Escolher arquivo de pontos', '5 - Gerar MST usando algoritmo de Prim', '6 - Mostrar cruzamentos',
+          '7 - Remover cruzamentos', '8 - Gerar st.fe', '9 - Rodar st.fe no Evolver', '10 - SAIR',
+        ]
 
 def print_menu(stdscr, selected_row_idx):
     stdscr.clear()
@@ -88,11 +68,13 @@ def main(stdscr):
             # if user selected last row, exit the program
             if current_row == len(menu)-1:
                 break
-            elif current_row == 0:
-                pontos = lerPontos()
-            elif current_row == 1:
-                arestas = f.primAlg(pontos)
+            elif current_row == 4:
+                pontos = readFile.lerPontos()
+            elif current_row == 5:
+                arestas = prim.primAlg(pontos)
                 plot.plotar(arestas)
+                stdscr.clear()
+                menu[0] = "\n *** \n Arquivo mst.png gerado com sucesso! \n ***  "
             else:
                 print("Hi")
 
