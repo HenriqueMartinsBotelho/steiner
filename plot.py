@@ -1,13 +1,7 @@
-#import tkinter as tk
-#from tkinter import  filedialog, Text
 import time
 import os
-#from scipy.spatial import distance
-#import math
-#import numpy as np
 import matplotlib.pylab as pl
 from matplotlib import collections  as mc
-#import f
 
 
 # Converte as arestas para um formato imprimível  
@@ -20,13 +14,15 @@ def convertePrim(E):
     return arestas       
 
 
-
-def plotar(arestas):
+# Plota as arestas
+def plotar(arestas, cruzamentos, cor='b'):
     arestas = convertePrim(arestas)
-    lc = mc.LineCollection(arestas, linewidths=1)
+    cruzamentos = convertePrim(cruzamentos)
+    lc = mc.LineCollection(arestas, linewidths=1, colors='b')
+    lc2 = mc.LineCollection(cruzamentos, linewidths=1, colors='r') # Coleção de arestas vermelhas generalizar o arestas[0]
     fig, ax = pl.subplots()
     ax.add_collection(lc)
+    ax.add_collection(lc2)
     ax.autoscale()
     ax.margins(0.1)
-    #pl.show()
-    pl.savefig("mst")
+    pl.show()
