@@ -4,16 +4,19 @@ import numpy as np
 import matplotlib.pylab as pl
 from matplotlib import collections  as mc 
 import os
- 
-class Ponto:
-    def __init__(self, x,y,w):
-        self.x = x
-        self.y = y
-        self.w = w
-    
+
+'''
+    Função de ponderação usada no algoritmo de Prim.
+    Recebe dois pontos e retorna a média aritmética de seus pesos.
+'''
+
 def w(p1,p2):
     return distance.euclidean((p1.x,p1.y),(p2.x,p2.y))*(p1.w + p2.w)/2
 
+'''
+    Recebe uma lista de pontos da Classe Ponto e retorna uma lista de aresta
+    onde cada aresta é formada por dois Pontos.
+'''
 def primAlg(pontos):
     E = []
     NaoEsc = pontos[1:]
