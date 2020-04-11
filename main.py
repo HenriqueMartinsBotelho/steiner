@@ -3,6 +3,8 @@ import readFile
 import prim
 import plot
 import showcross
+import geraPontos
+import noCross
 
 arestas = []
 
@@ -34,21 +36,29 @@ def arq(caminho, mst, nocross, show):
         arestas = prim.primAlg(pontos)
         plot.plotar(arestas, [])
     if nocross:
-        click.echo("chamar nocross")
+        arestas = prim.primAlg(pontos)
+        noCross.noCrossAlg(arestas)
     if show:
         arestas = prim.primAlg(pontos)
         showcross.showCrossAlg(arestas)
 
 
 
-@arquivo.command('gerar',  help='Comando com opções para gerar arquivos com pontos')
+@arquivo.command('gera')
+@click.argument('nome', type=click.STRING)
 @click.argument('n', type=click.INT)
-@click.option(
-    '-peso', 'peso', is_flag=True,
-    help='Gera pontos com pesos',
-)
-def gerar(n, peso):
-    click.echo(n)
+@click.argument('p', type=click.BOOL)
+
+
+def gera(nome, n, p=False):
+    '''Comando para gerar arquivos de pontos
+
+    Digite primeiro o nome do arquivo depois o número de pontos de pois 1 se quiser gerar com pesos
+    ou 0 se quiser gerar sem pesos.
+
+    Ex: python main.py teste 100 1   Gera um arquivo chamado teste.txt com 100 pontos e com pesos 
+    '''
+    geraPontos.gerar(nome, n, p)
 
 
 arquivo()
