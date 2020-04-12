@@ -85,12 +85,16 @@ def removeCruzamentoS(cruzamento2):
 ## Recebe uma lista de arestas e remove os cruzamentos
 def noCrossAlg(arestas):
     cruzamentos2 = []
+    remover = []
     for e1 in arestas:
         for e2 in arestas:
             if e1 != e2:
                 if intersect(e1[0], e1[1], e2[0], e2[1]):
                     if [e1, e2] not in cruzamentos2 and [e2, e1] not in cruzamentos2:
                         cruzamentos2.append([e1, e2])
+                        remover.append(e2)
+    for a in remover:
+        arestas.remove(a)
     novasArestas = removeCruzamentoS(cruzamentos2)
     semCruzamento = []
     for item in novasArestas:
