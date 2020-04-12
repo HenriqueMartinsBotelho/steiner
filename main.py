@@ -56,7 +56,7 @@ def gera(nome, n, p=False):
     Digite primeiro o nome do arquivo depois o número de pontos de pois 1 se quiser gerar com pesos
     ou 0 se quiser gerar sem pesos.
 
-    Ex: python main.py teste 100 1   Gera um arquivo chamado teste.txt com 100 pontos e com pesos 
+    Ex: python main.py gera exemplos/pontos 100 1   Gera um arquivo chamado ponto.txt com 100 pontos e com pesos 
     '''
     geraPontos.gerar(nome, n, p)
 
