@@ -1,6 +1,11 @@
-
-import plot
 from Ponto import *
+import click
+import readFile
+import prim
+import plot
+import showcross
+import geraPontos
+import noCross
 
 
 def printAresta(e1):
@@ -84,26 +89,40 @@ def removeCruzamentoS(cruzamento2):
 
 ## Recebe uma lista de arestas e remove os cruzamentos
 def noCrossAlg(arestas):
+    cruzamentos = []
     cruzamentos2 = []
     for e1 in arestas:
         for e2 in arestas:
             if e1 != e2:
                 if intersect(e1[0], e1[1], e2[0], e2[1]):
-                    if [e1, e2] not in cruzamentos2 and [e2, e1] not in cruzamentos2:
+                    if [e1,e2] not in cruzamentos2:
+                        pass
+                        #cruzamentos2.append([e1, e2])
+                    if e1 not in cruzamentos and e2 not in cruzamentos:
                         cruzamentos2.append([e1, e2])
+                        cruzamentos.append(e1)
+                        cruzamentos.append(e2)
+    for aresta in cruzamentos:
+        printAresta(aresta)
+    print('kkkkk')
     novasArestas = removeCruzamentoS(cruzamentos2)
     semCruzamento = []
     for item in novasArestas:
         semCruzamento.append(item[0])
         semCruzamento.append(item[1])
 
-    print('\n ARESTAS QUE SE CRUZAM \n')
-    for item in cruzamentos2:
-        printAresta(item[0])
-        printAresta(item[1])
-    print('\n NOVAS ARESTAS \n')
-    for item in novasArestas:
-        printAresta(item[0])
-        printAresta(item[1])
 
+    #for item in cruzamentos2:
+    #   printAresta(item[0])
+    #    printAresta(item[1])
+    #cruzamentos[0] = encurtaAresta(cruzamentos[0])
+    #cruzamentos = encurtaArestas(cruzamentos)
+    #teste = encurtaAresta(cruzamentos)
+    #for t in teste:
+    #    printAresta(t)
     plot.plotar(arestas, semCruzamento, 'b')
+
+
+pontos = readFile.readPontos("exemplos/cruzamento1.txt")
+arestas = prim.primAlg(pontos)
+noCross.noCrossAlg(arestas)
