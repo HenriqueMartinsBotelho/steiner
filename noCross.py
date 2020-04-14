@@ -1,3 +1,4 @@
+# FALTA implementar a função ehFolha
 
 import plot
 from Ponto import *
@@ -27,28 +28,6 @@ def intersect(p1, p2, p3, p4):
 #implementar
 def ehFolha(p1, p2):
     return False
-
-def encurtaArestas(cruzamentos):
-    newEdges = []
-    for i in range(len(cruzamentos)):
-        if i % 2 == 1:
-            p1 = cruzamentos[i][0]
-            p2 = cruzamentos[i][1]
-            a = p1.x
-            b = p1.y
-            c = p2.x
-            d = p2.y
-            if ehFolha(c,d): #Uso a equação vetoria (a + b) + k(c - a; d - b) para achar um ponto na aresta
-                ne = [Ponto(a,b), Ponto(c + 0.5*(a-c), d + 0.5*(b-d) )]
-            else:
-                ne = [Ponto(c + 0.5*(a-c), d + 0.5*(b-d) ), Ponto(c,d)]
-            old = [Ponto(cruzamentos[i-1][0].x, cruzamentos[i-1][0].y), Ponto(cruzamentos[i-1][1].x, cruzamentos[i-1][1].y)]
-            newEdges.append(old)
-            newEdges.append(ne)
-    print("==== NOVA LISTA DE ARESTASS ======")
-    for e in newEdges:
-        printAresta(e)
-    return newEdges
     
 
 ''' Recebe uma aresta "e" e a encurta do jeito certo, i.e encolhe 
@@ -59,9 +38,9 @@ def encurtaAresta(e):
     c = e[1].x
     d = e[1].y
     if ehFolha(c,d): #Uso a equação vetoria (a + b) + k(c - a; d - b) para achar um ponto na aresta
-        ne = [Ponto(a,b), Ponto(c + 0.5*(a-c), d + 0.5*(b-d) )]
+        ne = [Ponto(a,b), Ponto(c + 0.9*(a-c), d + 0.9*(b-d) )]
     else:
-        ne = [Ponto(c + 0.5*(a-c), d + 0.5*(b-d) ), Ponto(c,d)]
+        ne = [Ponto(c + 0.9*(a-c), d + 0.9*(b-d) ), Ponto(c,d)]
     return ne
 
 
@@ -75,6 +54,10 @@ def removeCruzamento(e1, e2):
         e2 = encurtaAresta(e2)
     return [e1, e2]
 
+
+'''
+Remove todos os cruzamentos e retorna as novas arestas
+'''
 def removeCruzamentoS(cruzamento2):
     novasArestas = []
     for item in cruzamento2:
@@ -82,32 +65,22 @@ def removeCruzamentoS(cruzamento2):
         novasArestas.append(rc)
     return novasArestas
 
-## Recebe uma lista de arestas e remove os cruzamentos
 def noCrossAlg(arestas):
-    cruzamentos2 = []
+    cruzamentos = []
     remover = []
     for e1 in arestas:
         for e2 in arestas:
             if e1 != e2:
                 if intersect(e1[0], e1[1], e2[0], e2[1]):
-                    if [e1, e2] not in cruzamentos2 and [e2, e1] not in cruzamentos2:
-                        cruzamentos2.append([e1, e2])
+                    if [e1, e2] not in cruzamentos and [e2, e1] not in cruzamentos:
+                        cruzamentos.append([e1, e2])
                         remover.append(e2)
     for a in remover:
         arestas.remove(a)
-    novasArestas = removeCruzamentoS(cruzamentos2)
+    novasArestas = removeCruzamentoS(cruzamentos)
     semCruzamento = []
     for item in novasArestas:
         semCruzamento.append(item[0])
         semCruzamento.append(item[1])
-
-    print('\n ARESTAS QUE SE CRUZAM \n')
-    for item in cruzamentos2:
-        printAresta(item[0])
-        printAresta(item[1])
-    print('\n NOVAS ARESTAS \n')
-    for item in novasArestas:
-        printAresta(item[0])
-        printAresta(item[1])
 
     plot.plotar(arestas, semCruzamento, 'b')
