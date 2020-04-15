@@ -2,7 +2,7 @@
 
 import plot
 from Ponto import *
-
+import saveFile
 
 def printAresta(e1):
     print([(e1[0].x, e1[0].y), (e1[1].x, e1[1].y)])
@@ -83,4 +83,5 @@ def noCrossAlg(arestas):
         semCruzamento.append(item[0])
         semCruzamento.append(item[1])
 
+    saveFile.saveArestas(arestas, "arestas1.txt")
     plot.plotar(arestas, semCruzamento, 'b')
