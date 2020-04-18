@@ -29,6 +29,7 @@ def arquivo():
     help='Executa algoritmo Showcross'
 )
 
+
 def arq(caminho, mst, nocross, show):
     #if caminho:
     pontos = readFile.readPontos(caminho)
@@ -59,6 +60,8 @@ def gera(nome, n, p=False):
     Ex: python main.py gera exemplos/pontos 100 1   Gera um arquivo chamado ponto.txt com 100 pontos e com pesos 
     '''
     geraPontos.gerar(nome, n, p)
+
+
 
 
 arquivo()
